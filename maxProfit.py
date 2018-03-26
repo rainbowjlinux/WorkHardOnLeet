@@ -2,19 +2,22 @@
 
 
 class Solution(object):
-    def maxProfit(self, nums):
-        maxValue = 0
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                print("{} - {}".format(nums[j], nums[i]))
-                if (nums[j] - nums[i] > maxValue):
-                    maxValue = nums[j] - nums[i]
-        return maxValue
+    def maxProfit(self, prices):
+        maxprofit = 0
+        if(prices != []):
+            minprice = prices[0]
+            for i in range(len(prices)):
+                if (prices[i] < minprice):
+                    minprice = prices[i]
+                elif (prices[i] - minprice > maxprofit):
+                    maxprofit = prices[i] - minprice
+        return maxprofit
 
 
 if __name__ == '__main__':
-    nums = [7, 1, 5, 6, 2, 3]
-    # nums = [7, 6, 5, 4, 3, 2]
+    prices = [7, 1, 5, 6, 2, 3]
+    # prices = [7, 6, 5, 4, 3, 2]
+    # prices = []
     solution = Solution()
-    maxprofit = solution.maxProfit(nums)
+    maxprofit = solution.maxProfit(prices)
     print(maxprofit)
