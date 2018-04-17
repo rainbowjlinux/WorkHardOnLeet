@@ -3,19 +3,18 @@
 
 class Solution(object):
     def twosum(self, nums, target):
-        couple = []
-        print(nums)
-        for i in range(len(nums)):
-            for j in range(i + 1, len(nums)):
-                if (nums[i] + nums[j] == target):
-                    couple.append([i, j])
-                    print("{} + {} = {}".format(nums[i], nums[j], target))
-        return couple
+        d = dict()
+        for index, value in enumerate(nums):
+            m = target - value
+            if m in d:
+                return d[m], index
+            else:
+                d[value] = index
 
 
 if __name__ == '__main__':
-    nums = [3, 3, 2, 4]
-    target = 6
+    nums = [2, 7, 11, 15]
+    target = 9
     solution = Solution()
-    couple = solution.twosum(nums, target)
-    print(couple)
+    ans = solution.twosum(nums, target)
+    print(ans)
