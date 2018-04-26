@@ -3,16 +3,9 @@
 
 class Solution(object):
     def removeDuplicates(self, nums):
-        if len(nums) < 1:
+        if not nums:
             return 0
-        if len(nums) < 2:
-            return 1
-        value = nums[0]
-        for i in nums[1:]:
-            if (i == value):
-                nums.remove(i)
-            else:
-                value = i
+        nums[:] = sorted(list(set(nums)))
         return len(nums)
 
 
